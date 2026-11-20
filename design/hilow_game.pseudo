@@ -1,29 +1,58 @@
-# IT 140 Module Four Assignment
-# Higher/Lower Game Pseudocode Template
-#
-# Complete the TODO prompts below with your own pseudocode.
-# Keep this file in .pseudo format for submission.
-#
-# Use clear indentation to show decisions and repeated behavior.
-# Your finished pseudocode should address every requirement in the
-# current Module Four Assignment Guidelines and Rubric.
-
 START hilow_game
 
+    DISPLAY "Welcome to the higher/lower game Bella!"
+
     # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+
+    REPEAT
+
+        DISPLAY "Enter the smallest number:"
+        INPUT smallest_number
+
+        DISPLAY "Enter the biggest number:"
+        INPUT biggest_number
+
+        IF smallest_number >= biggest_number THEN
+            DISPLAY "The smallest number must be less than the biggest number."
+        END IF
+
+    UNTIL smallest_number < biggest_number
 
     # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+
+    SET random_number = RANDOM NUMBER between smallest_number and biggest_number
 
     # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+
+    DISPLAY "Great, now guess a number between ", smallest_number,
+            " and ", biggest_number
+
+    INPUT guess
+
+    WHILE guess < smallest_number OR guess > biggest_number
+        DISPLAY "Oops! The smallest number must be less than the biggest number."
+        INPUT guess
+    END WHILE
+
+    WHILE guess != random_number
+
+        IF guess < random_number THEN
+            DISPLAY "Sorry, that's too low. Guess again."
+
+        ELSE
+            DISPLAY "Sorry, that's too high. Guess again."
+        END IF
+
+        DISPLAY "Try again! Pick a number between the smallest and biggest numbers."
+        INPUT guess
+
+        WHILE guess < smallest_number OR guess > biggest_number
+            DISPLAY "Oops! The smallest number must be less than the biggest number."
+            INPUT guess
+        END WHILE
+
+    END WHILE
+
+    DISPLAY "Awesome! You got it!"
 
 END hilow_game
-
-# === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
